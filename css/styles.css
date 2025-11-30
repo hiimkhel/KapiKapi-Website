@@ -1,0 +1,295 @@
+/* F*/
+:root{
+    --primary-color: #6E4B3A;
+    --secondary-color: #E8DCC8;
+    --background-color: #C4B5A0;
+    --tertiary-color: #7A8D6D;
+    --primary-font: 'Comic Neue';
+    --secondary-font: 'Quicksand';
+    --logo-font: 'Architects Daughter';
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* HEADER STYLINGS */
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    background-color: var(--secondary-color);
+    width: 100%;
+}
+.header-logo{
+    display: flex;
+    gap: 12px;
+    font-family: "Architects Daughter";
+    color: var(--tertiary-color);
+}
+
+.logo-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+nav{
+    display: flex;
+    gap: 24px;
+    font-family: "Quicksand";
+    
+    font-size: 16px;
+}
+nav a {
+    position: relative;
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 6px 8px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--tertiary-color);
+    transform: scale(1.1);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+.active{
+    color: var(--tertiary-color);
+}
+img{
+    width: 50px;
+}
+.transparent-btn{
+    padding: 12px 28px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600%;
+    transition: 0.2s ease;
+}
+
+.login-and-register-btn{
+    font-family: "Architects Daughter";
+}
+/* HERO section */
+.hero {
+    height: 500px;
+     background: linear-gradient(rgba(134, 134, 134, 0.5), rgba(30, 30, 30, 0.5)),
+                url("../images/Herobg.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero img{
+    width: 100%
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    --logo-font: 'Architects Daughter';
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    --logo-font: 'Architects Daughter';
+}
+
+
+.primary-btn {
+    margin-top: 60px;
+    padding: 12px 28px;
+    background: #7da06c;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600%;
+    transition: 0.2s ease;
+}
+
+.primary-btn:hover {
+    background: #6a8a5c;
+}
+
+/* Featureer Treats */
+
+.featured{
+    padding: 60px 0;
+    text-align: center;
+}
+
+.featured h2{
+    font-size: 60px 0;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+
+.card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.view-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 2px solid #c5b39e;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #5a4b3a;
+    transition: 0.2s;
+}
+
+.view-btn:hover {
+    background: #e9d9c7;
+}
+
+/* JOIN SECTION */
+.join {
+    background: #e9d9c7;
+    padding: 50px;
+    text-align: center;
+    border-radius: 20px;
+    width: 80%;
+    margin: 40px auto;
+}
+
+.join h2 {
+    margin-bottom: 10px;
+}
+
+.join p {
+    margin-bottom: 20px;
+}
+
+/* MENU STYLINGS */
+.hidden{
+    display: none;
+}
+
+/* FOOTER STYLINGS */
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    padding: 2em;
+    color: var(--primary-color);
+    font-family: var(--secondary-font);
+}
+.footer-section{
+    display: flex;
+    padding: 2em;
+    justify-self: center;
+    justify-content: center;
+    
+}
+.footer-content{
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+.socials-icons {
+    display: flex;
+    margin-top: 8px;
+    gap: 12px;
+    align-items: center;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    overflow: hidden;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.social img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Hover Effect */
+.social:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.social:hover img {
+    filter: brightness(0) invert(1); /* Turns icons white on hover */
+}
+.footer-logo{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.border{
+    width: 80%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    margin: 8px;
+}
+.copyright{
+    font-size: 21px;
+    text-align: center;
+    align-self: center;
+}

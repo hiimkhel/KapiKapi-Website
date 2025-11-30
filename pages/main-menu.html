@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comic+Neue&family=Quicksand:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>KapiKapi Cafe</title>
+</head>
+<body> 
+    <header>
+        <!-- Logo and Title-->
+        <div class="header-logo">
+            <img class="logo-img" src="../images/logo.png">
+            <h2>KapiKapi</h2>
+        </div>
+
+        <!-- Navigation Menu-->
+        <nav>
+            <a href="/" class="active">Home</a>
+            <a href="./pages/main-menu.html">Menu</a>
+            <a href="">About</a>
+            <a href="">Contacts</a>
+        </nav>
+        <!-- Login & Register Button-->
+
+        <div class="login-and-register-btn">
+            <a class="transparent-btn header-btns" href="/login.html">Login</a>
+            <a class="primary-btn header-btns" href="/register.html">Register</a>
+        </div>
+    </header>
+    
+    <main>
+        <h1>Our Menu & Merch</h1>
+        <p>Treat yourself to our selection of ethically sourced coffees, homemade treats, and cozy merchandise. 100% capybara approved.</p>
+
+        <nav>
+            <button onclick="showSection('food-section')">Food & Drinks</button>
+            <button onclick="showSection('merch-section')">Merchandise Section</button>
+        </nav>
+        
+        <!--Food and Drinks Section-->
+        <section id="food-section">
+            <article>
+                <img src="" alt="">
+                <h2>CapyCino Latte</h2>
+                <p>Rich espresso with steamed milk and cute capybara foam art</p>
+                <p>180.00</p>
+                <button onclick="showOrderPopUp('CapyCino Latte', '180.00')">Order Now</button>
+            </article>
+            
+            <article>
+                <img src="" alt="">
+                <h2>Mudbath Mocha</h2>
+                <p>Decadent dark chocolate mocha with whipped cream "mud"</p>
+                <p>200.00</p>
+                <button onclick="showOrderPopUp('Mudbath Mocha', '200.00')">Order Now</button>
+            </article>
+
+            <article>
+                <img src="" alt="">
+                <h2>Riverbank Iced Coffee</h2>
+                <p>Refreshing cold brew with a hint of mint and sweet cream</p>
+                <p>160.00</p>
+                <button onclick="showOrderPopUp('Riverbank Iced Coffee', '160.00')">Order Now</button>
+            </article>
+            
+            <article>
+                <img src="" alt="">
+                <h2>Leaf-Nibble Matcha</h2>
+                <p>Ceremonial grade matcha latte. Capybara's favorite greens.</p>
+                <p>190.00</p>
+                <button onclick="showOrderPopUp('Leaf-Nibble Match', '190.00')">Order Now</button>
+            </article>
+
+            <article>
+                <img src="" alt="">
+                <h2>Capy Buns</h2>
+                <p>Two soft, sweet mini bread buns shaped like our mascot.</p>
+                <p>120.00</p>
+                <button onclick="showOrderPopUp('Capy Buns', '120.00')">Order Now</button>
+            </article>
+            
+            <article>
+                <img src="" alt="">
+                <h2>Capy Pancakes</h2>
+                <p>Stacks of fluffy pancakes with drizzled butter and maple syrup.</p>
+                <p>250.00</p>
+                <button onclick="showOrderPopUp('Capy Pancakes', '250.00')">Order Now</button>
+            </article>
+        </section>
+
+        <!--Merchandise Section-->
+        <section id="merch-section">
+            <article>
+                <img src="" alt="">
+                <h2>Copy Plushie</h2>
+                <p>Super soft, huggable capybara plushie. The ultimate chill companion.</p>
+                <p>190.00</p>
+                <button onclick="showOrderPopUp('Capy Plushie', '190.00')">Order Now</button>
+            </article>
+            
+            <article>
+                <img src="" alt="">
+                <h2>KapiKapi Mug</h2>
+                <p>Ceramic mug with our mascot. Perfect for your morning slow sips.</p>
+                <p>400.00</p>
+                <button onclick="showOrderPopUp('KapiKapi Mug', '400.00')">Order Now</button>
+            </article>
+
+            <article>
+                <img src="" alt="">
+                <h2>Slow Sips Tote</h2>
+                <p>Eco-friendly canvas tote bag for carrying your essentials.</p>
+                <p>350.00</p>
+                <button onclick="showOrderPopUp('Slow Sips Tote', '350.00')">Order Now</button>
+            </article>
+        </section>
+
+        <!-- Order PopUp-->
+         <div id=order-popup">
+            <div>
+                <h2>Complete Yor Order</h2>
+                <button id="close-button" onclick="closeOrderPopup()">X</button>
+            </div>
+
+            
+            <div>
+                <!-- Product Image -->
+                <img src="" alt="">
+                
+                <!-- Product Info -->
+                <div>
+                    <h3 id="popup-product-name">Product Name</h3>
+                    <p id="popup-product-price">₱0.00</p>
+                </div>
+                
+                <button onclick="decreaseQty()">-</button>
+                <span id="qty-value">1</span>
+                <button onclick="increaseQty()">+</button>
+            </div>
+            
+    
+        <form id="order-form" onsubmit="submitOrder(event)"> 
+            <!--Customer's Address-->
+            <label for="streetAddress">Street Address *</label>
+            <input type="text" id="streetAddress" placeholder="House no., Building, Street name" required>
+
+            <label for="barangay">Barangay *</label>
+            <input type="text" id="barangay" placeholder="Barangay" required>
+
+            <label for="city">City *</label>
+            <input type="text" id="city" placeholder="City" required>
+
+            <label for="province">Province *</label>
+            <input type="text" id="province" placeholder="Province" required>
+
+            <label for="zip">Zip Code *</label>
+            <input type="text" id="zip" placeholder="Zip Code" pattern="\d{4}" title="Please enter a 4-digit ZIP Code." required>
+
+            <!--Phone Number-->
+            <label for="number">Phone Number *</label>
+            <input type="tel" id="number" placeholder="+63 XXX XXX XXXX" title="Please enter a valid phone number." required>
+
+            <!--Delivery Notes-->
+            <label for="notes">Delivery Notes (Optional)</label>
+            <textarea id="notes" placeholder="Add any special instructions for delivery..."></textarea>
+
+            <!-- Total Display -->
+            <div>
+                <p>Total (<span id="total-items">1</span> item)</p>
+                <p id="total-price">₱0.00</p> 
+            </div>
+                    
+                <button type="submit">Place Order</button> 
+            </form>            
+         </div>
+    </main>
+
+    <footer>
+        <!-- 3 Column-->
+
+        <div class="footer-section">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="logo-img" src="../images/logo.png">
+                    <h3>KapiKapi</h3>
+                </div>
+
+                <p>Capturing cozy moments. The friendliest coffee shop in town, inspired by nature's most chill animal.</p>
+            </div>
+            
+            <!-- Visit Us-->
+            <div class="footer-content">
+                <h3>Visit Us</h3>
+                <p>Luna St., La Paz</p>
+                <p>Iloilo City, 5000 Iloilo</p>
+                <p>Daily: 7am-9pm</p>
+            </div class="footer-content">
+
+            <!-- Contacts -->
+            <div class="footer-content">
+                <h3>Contact</h3>
+                <p>kapikapi@gmail.com</p>
+                <p>(+639) 123-4567</p>
+                <!-- Social Media Icon-->
+                <div class="socials-icons">
+                    <a class="social">
+                        <img src="../images/social-media-icons/ig.png">
+                    </a>
+                    <a class="social">
+                        <img src="../images/social-media-icons/twitter.png">
+                    </a>
+                    <a class="social">
+                        <img src="../images/social-media-icons/fb.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Border -->
+        <div class="border"></div>
+
+        <div class="copyright">
+            <p>© KapiKapi Coffee. All Rights Reserved</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Variables to store current order details
+        let currentProductName = '';
+        let currentProductPrice = 0;
+        let currentQuantity = 1;
+
+        // Function to show/hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.getElementById('food-section').style.display = 'none';
+            document.getElementById('merch-section').style.display = 'none';
+            
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Function to show order popup
+        function showOrderPopUp(productName, price) {
+            currentProductName = productName;
+            currentProductPrice = parseFloat(price);
+            currentQuantity = 1;
+
+            // Update popup content
+            document.getElementById("popup-product-name").textContent = productName;
+            document.getElementById("popup-product-price").textContent = '$' + price;
+            document.getElementById("qty-value").textContent = '1';
+            updateTotal();
+
+            // Show the popup
+            document.getElementById('order-popup').style.display = 'block';        
+        }
+
+        // Function to close order popup
+        function closeOrderPopup() {
+            document.getElementById('order-popup').classList.remove = 'block'
+            // Reset Form
+            document.getElementById('order-form').reset();
+        }
+
+        // Function to increase quantity
+        function increaseQty() {
+           currentQuantity++; 
+           document.getElementById('qty-value').textContent = currentQuantity;
+           updateTotal();
+        }
+
+        // Function to decrease quantity
+        function decreaseQty() {
+            if (currentQuantity > 1) {
+                currentQuantity--; 
+            document.getElementById('qty-value').textContent = currentQuantity;
+            updateTotal();
+            }
+        }
+
+        // Function to update toal price
+        function updateTotal() {
+            const total = currentProductPrice * currentQuantity;
+            document.getElementById('total-price').textContent = '₱' + total.toFixed(2);
+            document.getElementById('total-items').textContent = currentQuantity;
+        }
+        
+        // Function to handle form submission
+        function submitOrder(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = {
+                product: currentProductName,
+                quantity: currentQuantity,
+                price: currentProductPrice,
+                total: currentProductPrice * currentQuantity,
+                streetAddress:document.getElementById('streetAddress').value,
+                barangay:document.getElementById('barangay').value,
+                city:document.getElementById('city').value,
+                province:document.getElementById('province').value,
+                zipCode:document.getElementById('zip').value,
+                phoneNumber:document.getElementById('number').value,
+                deliveryNotes:document.getElementById('notes').value,
+            }
+
+            // Display order confirmation
+            alert('Order Placed Successfully!\n\n' + 
+                  'Product: ' + formData.product + '\n' +
+                  'Quantity: ' + formData.quantity + '\n' +
+                  'Total: ₱' + formData.total.toFixed(2) + '\n\n' +
+                  'Delivery Address:\n' + formData.streetAddress + ', ' + formData.barangay + '\n' +
+                  formData.city + ', ' + formData.province + ' ' + formData.zipCode + '\n' +
+                  'Phone: ' + formData.phoneNumber);
+
+            closeOrderPopUp();
+        }
+    </script>
+</body>
+</html>
