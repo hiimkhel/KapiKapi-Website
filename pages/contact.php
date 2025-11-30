@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comic+Neue&family=Quicksand:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>KapiKapi Cafe</title>
+</head>
+<body>
+    <?php include("header.php")?>
+
+    <main>
+        <div id="contact-container">
+            <!--Header Section-->
+            <h1>Get in Touch</h1>
+            <p>We love hearing from our fellow chillers</p>
+
+            <!-- Contact Info and Form Section -->
+            <div id="content-wrapper">
+                <!-- Left Side -->
+                <div id="contact-info-card">
+                    <!-- Location -->
+                    <div id="location-section">
+                        <img src="" alt="">
+                        <div id="location-details"> 
+                            <h3>Location</h3>
+                            <p>123 Riverbank Lane</p>
+                            <p>Relaxation City, RC 98765</p>
+                        </div>
+                    </div>
+
+                    <!-- Open Hours -->
+                    <div id="hours-section">
+                        <img src="" alt="">
+                        <div id="hours-details">
+                            <h3>Hours</h3>
+                            <p>Mon-Fri: 7:00 AM - 8:00 PM</p>
+                            <p>Sat-Sun: 8:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div id="phone-section">
+                        <img src="" alt="">
+                        <div phone-details>
+                            <h3>Phone</h3>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div id="email-section">
+                        <img src="" alt="">
+                        <div id="email-details">
+                            <h3 >Email</h3>
+                            <p>hello@kapikapi.coffee</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Contact Form -->
+                <div id="contact-form-card">
+                    <form id="contact-form">
+                        <!-- First Name and Last Name -->
+                        <div id="name-fields">
+                            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div id="email-field">
+                            <input type="email" id="emailInput" name="email" placeholder="Email Address" required>
+                        </div>
+                        
+                        <!-- Subject -->
+                        <div id="subject-field">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+
+                        <!-- Message -->
+                        <div id="message-field">
+                            <textarea id="message" name="message" placeholder="Your message..." rows="6" required></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <?php include("footer.php")?>
+</body>
