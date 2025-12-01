@@ -173,11 +173,27 @@
             let currentProductPrice = 0;
             let currentQuantity = 1;
 
+            // Add active class on menu buttons
+            const menuButtons = document.querySelectorAll('.menu-btn');
+
+            menuButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+
+                    // remove active class from all buttons
+                    menuButtons.forEach(b => b.classList.remove('menu-btn-active'));
+
+                    // add active class to the clicked one
+                    this.classList.add('menu-btn-active');
+                });
+            });
 
             // Hide merch section on page load
             window.addEventListener("DOMContentLoaded", () => {
                 document.getElementById('food-section').style.display = 'grid'; // show food
                 document.getElementById('merch-section').style.display = 'none'; // hide merch
+
+                // make first button active by default
+                document.querySelectorAll('.menu-btn')[0].classList.add('menu-btn-active');
             });
 
             // Function to show/hide sections

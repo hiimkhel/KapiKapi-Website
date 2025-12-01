@@ -232,6 +232,9 @@ main{
 .menu-toggle-btns{
     align-self: center;
     justify-self: center;
+    justify-content: center;
+    margin: 12px;
+    
 }
 .menu-title{
     margin-bottom: 12px;
@@ -248,7 +251,36 @@ main{
     font-size: 16px;
     background-color: var(--supporting-color);
     border: none;
+    color: var(--primary-color);
     padding: 16px;
+    position: relative;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.menu-btn:hover {
+    transform: scale(1.05);
+    color: var(--tertiary-color);
+}
+
+/* Animated underline on hover */
+.menu-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.menu-btn:hover::after {
+    width: 100%;
+}
+
+.menu-btn-active{
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: bold;
 }
 /* Shared grid styling for both sections */
 #food-section,
@@ -331,7 +363,7 @@ main{
     padding: 2.5em;
     color: var(--primary-color);
     display: flex;
-    width: 900px;
+    width: 100%;
     justify-self: center;
     justify-content: center;
     text-align: left;
@@ -375,7 +407,11 @@ main{
 .about-content p{
     margin-top: 24px;
 }
-
+.philosophy-container{
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+}
 #philosophy-box{
     display: flex;
     flex-direction: column;

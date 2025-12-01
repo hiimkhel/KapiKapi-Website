@@ -26,11 +26,14 @@
                 <p>The capybara is nature's most chill animal. They get along with everyone, take life at their own pace, and know the value of a good soak. At <span class="text-bold">KapiKapi</span>, we wanted to create a space that embodies that same spirit: No rushing, no stress—just slow sips and cozy moments.</p>
             </div>
         </div>
-        <div id="philosophy-box">
+        <div class="philosophy-container">
+            <div id="philosophy-box">
             <h2>Our Philosophy</h2>
             <p>We believe coffee shouldn't just be fuel; it should be a hug in a mug. Every ingredient is chosen for comfort. Our "Moodbath Mocha" uses the thickest, richest chocolate we could find. Our "Last-Nibble Matcha" is sourced from shade-grown farms that prioritize tranquility.</p>
             <p>So come in, pull up a chair (or a bean bag), and channel your inner capybara.</p>
         </div>
+        </div>
+        
 
     </main> 
 
