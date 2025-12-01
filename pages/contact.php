@@ -66,27 +66,27 @@
                     <form id="contact-form">
                         <!-- First Name and Last Name -->
                         <div id="name-fields">
-                            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
-                            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                            <input class="contact-input" type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            <input class="contact-input" type="text" id="lastName" name="lastName" placeholder="Last Name" required>
                         </div>
 
                         <!-- Email Address -->
                         <div id="email-field">
-                            <input type="email" id="emailInput" name="email" placeholder="Email Address" required>
+                            <input class="contact-input" type="email" id="emailInput" name="email" placeholder="Email Address" required>
                         </div>
                         
                         <!-- Subject -->
                         <div id="subject-field">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <input class="contact-input" type="text" id="subject" name="subject" placeholder="Subject" required>
                         </div>
 
                         <!-- Message -->
                         <div id="message-field">
-                            <textarea id="message" name="message" placeholder="Your message..." rows="6" required></textarea>
+                            <textarea class="contact-input" id="message" name="message" placeholder="Your message..." rows="6" required></textarea>
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" id="submit-btn">Send Message</button>
+                        <button class="primary-btn" type="submit" id="submit-btn">Send Message</button>
                     </form>
                 </div>
             </div>

@@ -527,7 +527,7 @@ main{
     align-items: center;
     justify-content: center;
     padding: 2em;
-    font-family: var(--secondary-font);
+    font-family: var(--primary-font);
     color: var(--primary-color);
 }
 .contact-title{
@@ -551,7 +551,49 @@ main{
 #contact-info-card{
     text-align: left;
 }
+#contact-form-card{
+    font-family: var(--primary-font);
 
+}
+/* Entire Form */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Name Fields Side-by-Side */
+#name-fields {
+    display: flex;
+    gap: 16px;
+}
+
+#name-fields .contact-input {
+    flex: 1;
+}
+
+/* Input Fields */
+.contact-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ccc;
+    border-radius: 24px;
+    font-size: 16px;
+    background-color: var(--supporting-color);
+    transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Focus Effect */
+.contact-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+/* Textarea */
+#message-field textarea {
+    resize: none;
+}
 .contact-info-section {
     display: flex;
     align-items: center;
@@ -572,7 +614,7 @@ main{
 
 /* Hover Effects */
 .contact-info-section:hover {
-    background-color: rgba(255, 128, 0, 0.173);
+    background-color: rgba(255, 128, 0, 0.435);
     transform: translateX(6px);
 }
 
