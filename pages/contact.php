@@ -15,26 +15,26 @@
     <main>
         <div id="contact-container">
             <!--Header Section-->
-            <h1>Get in Touch</h1>
-            <p>We love hearing from our fellow chillers</p>
+            <h1 class="contact-title">Get in Touch</h1>
+            <p class="contact-desc">We love hearing from our fellow chillers</p>
 
             <!-- Contact Info and Form Section -->
             <div id="content-wrapper">
                 <!-- Left Side -->
                 <div id="contact-info-card">
                     <!-- Location -->
-                    <div id="location-section">
-                        <img src="" alt="">
+                    <div class="contact-info-section">
+                        <img class="contact-icon"src="../images/contact-page/location.png" alt="">
                         <div id="location-details"> 
                             <h3>Location</h3>
-                            <p>123 Riverbank Lane</p>
-                            <p>Relaxation City, RC 98765</p>
+                            <p>Luna St., La Paz</p>
+                            <p>Iloilo City, 5000 Iloilo5</p>
                         </div>
                     </div>
 
                     <!-- Open Hours -->
-                    <div id="hours-section">
-                        <img src="" alt="">
+                    <div class="contact-info-section">
+                        <img class="contact-icon" src="../images/contact-page/clock.png" alt="">
                         <div id="hours-details">
                             <h3>Hours</h3>
                             <p>Mon-Fri: 7:00 AM - 8:00 PM</p>
@@ -43,20 +43,20 @@
                     </div>
 
                     <!-- Phone Number -->
-                    <div id="phone-section">
-                        <img src="" alt="">
-                        <div phone-details>
+                    <div class="contact-info-section">
+                        <img class="contact-icon" src="../images/contact-page/telephone.png" alt="">
+                        <div id="phone-details">
                             <h3>Phone</h3>
-                            <p>(555) 123-4567</p>
+                            <p>(+639) 123-4567</p>
                         </div>
                     </div>
 
                     <!-- Email -->
-                    <div id="email-section">
-                        <img src="" alt="">
+                    <div class="contact-info-section">
+                        <img class="contact-icon" src="../images/contact-page/letter.png" alt="">
                         <div id="email-details">
                             <h3 >Email</h3>
-                            <p>hello@kapikapi.coffee</p>
+                            <p>kapikapi@gmail.com</p>
                         </div>
                     </div>
                 </div>

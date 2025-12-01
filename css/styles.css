@@ -520,7 +520,67 @@ main{
 .auth-hidden {
     display: none;
 }
+/* CONTACTS PAGE STYLINGS */
+#contact-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    font-family: var(--secondary-font);
+    color: var(--primary-color);
+}
+.contact-title{
+    font-family: var(--logo-font);
+    font-size: 52px;
+}
+#content-wrapper{
+    display: flex;
+    padding: 1em;
+    gap: 24px;
+}
+#contact-info-card,
+#contact-form-card{
+    background-color: whitesmoke;
+    padding: 2.4em;
+    width: 450px;
+    border-radius: 24px;
+    box-shadow: 0px 12px 12px var(--primary-color);
+    
+}
+#contact-info-card{
+    text-align: left;
+}
 
+.contact-info-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: 0.25s ease;
+}
+
+.contact-info-section img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    padding: 6px; 
+    border-radius: 6px;
+    transition: 0.25s ease;
+}
+
+/* Hover Effects */
+.contact-info-section:hover {
+    background-color: rgba(255, 128, 0, 0.173);
+    transform: translateX(6px);
+}
+
+.contact-info-section:hover img {
+    filter: brightness(0) invert(1); /* turns black → white */
+    transform: scale(1.3);          /* makes icon larger */
+    opacity: 1;
+}
 
 /* FOOTER STYLINGS */
 footer{
