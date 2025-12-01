@@ -348,6 +348,164 @@ main{
     display: none;
 }
 
+/* * ORDER POPUP STYLINGS */
+/* === ORDER POPUP OVERLAY === */
+#order-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5); 
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+/* === POPUP BOX === */
+#order-popup > div {
+     background-color: #fff;
+    border-radius: 12px;
+    max-width: 500px;
+    height: 90%;
+    width: 100%;
+    padding: 2em;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    overflow-y: auto; 
+    animation: popupFade 0.3s ease-in-out;
+}
+
+/* --- Close Button --- */
+#order-popup #close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+#order-popup #close-button:hover {
+    transform: rotate(90deg);
+    color: #e74c3c;
+}
+
+/* --- Product Info Section --- */
+#order-popup > div > div:nth-of-type(2) {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+#order-popup img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#order-popup h3 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #333;
+}
+
+#order-popup p {
+    margin: 0.25em 0 0;
+    font-weight: 600;
+    color: #555;
+}
+
+/* --- Quantity Buttons --- */
+#order-popup button {
+    cursor: pointer;
+    padding: 0.4em 0.8em;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#order-popup button:hover {
+    background-color: #555; 
+    transform: scale(1.05);
+}
+
+#qty-value {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0 0.5em;
+}
+
+/* --- Form Inputs --- */
+#order-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}
+
+#order-popup label {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #333;
+}
+
+#order-popup input, 
+#order-popup textarea {
+    padding: 0.6em 0.8em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 0.95em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#order-popup input:focus,
+#order-popup textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* --- Total Display --- */
+#order-popup > div form > div:last-of-type {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 0.5em;
+}
+
+/* --- Place Order Button --- */
+#order-popup form button[type="submit"] {
+    margin-top: 1em;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#order-popup form button[type="submit"]:hover {
+    background-color: #444;
+}
+
+/* --- Popup Animation --- */
+@keyframes popupFade {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 /* ABOUT PAGE STYLINGS */
 .about-header{
     width: 100%;

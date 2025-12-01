@@ -100,68 +100,66 @@
                 </article>
             </section>
 
-            <!-- Order PopUp-->
+            <!-- Order PopUp -->
             <div id="order-popup">
-                <div>
-                    <h2>Complete Yor Order</h2>
-                    <button id="close-button" onclick="closeOrderPopup()">X</button>
-                </div>
-
-                
-                <div>
-                    <!-- Product Image -->
-                    <img src="" alt="">
-                    
-                    <!-- Product Info -->
-                    <div>
-                        <h3 id="popup-product-name">Product Name</h3>
-                        <p id="popup-product-price">₱0.00</p>
+                <div class="popup-card">
+                    <!-- Header -->
+                    <div class="popup-header">
+                        <h2>Complete Your Order</h2>
+                        <button id="close-button" onclick="closeOrderPopup()">×</button>
                     </div>
-                    
-                    <button onclick="decreaseQty()">-</button>
-                    <span id="qty-value">1</span>
-                    <button onclick="increaseQty()">+</button>
+
+                    <!-- Product Info -->
+                    <div class="popup-product-info">
+                        <img src="" alt="Product Image" id="popup-product-img">
+                        <div class="product-details">
+                            <h3 id="popup-product-name">Product Name</h3>
+                            <p id="popup-product-price">₱0.00</p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button type="button" onclick="decreaseQty()">-</button>
+                            <span id="qty-value">1</span>
+                            <button type="button" onclick="increaseQty()">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Order Form -->
+                    <form id="order-form" action="store-order.php" method="post">
+                        <input type="hidden" id="product" name="product">
+                        <input type="hidden" id="quantity" name="quantity">
+                        <input type="hidden" id="price" name="price">
+                        <input type="hidden" id="total" name="total">
+
+                        <label for="streetAddress">Street Address *</label>
+                        <input type="text" id="streetAddress" name="streetAddress" placeholder="House no., Building, Street name" required>
+
+                        <label for="barangay">Barangay *</label>
+                        <input type="text" id="barangay" name="barangay" required>
+
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+
+                        <label for="province">Province *</label>
+                        <input type="text" id="province" name="province" required>
+
+                        <label for="zip">Zip Code *</label>
+                        <input type="text" id="zip" name="zipCode" pattern="\d{4}" required>
+
+                        <label for="number">Phone Number *</label>
+                        <input type="tel" id="number" name="phoneNumber" required>
+
+                        <label for="notes">Delivery Notes</label>
+                        <textarea id="notes" name="deliveryNotes"></textarea>
+
+                        <!-- Total Display -->
+                        <div class="order-total">
+                            <p>Total (<span id="total-items">1</span> item)</p>
+                            <p id="total-price">₱0.00</p> 
+                        </div>
+
+                        <button type="submit">Place Order</button> 
+                    </form>
                 </div>
-                
-        
-            <form id="order-form" action="store-order.php" method="post"> 
-                <input type="hidden" id="product" name="product">
-                <input type="hidden" id="quantity" name="quantity">
-                <input type="hidden" id="price" name="price">
-                <input type="hidden" id="total" name="total">
-                <!--Customer's Address-->
-                <label for="streetAddress">Street Address *</label>
-                <input type="text" id="streetAddress" name="streetAddress" placeholder="House no., Building, Street name" required>
-
-            <label for="streetAddress">Street Address *</label>
-                <input type="text" id="streetAddress" name="streetAddress" required>
-
-                <label for="barangay">Barangay *</label>
-                <input type="text" id="barangay" name="barangay" required>
-
-                <label for="city">City *</label>
-                <input type="text" id="city" name="city" required>
-
-                <label for="province">Province *</label>
-                <input type="text" id="province" name="province" required>
-
-                <label for="zip">Zip Code *</label>
-                <input type="text" id="zip" name="zipCode" pattern="\d{4}" required>
-
-                <label for="number">Phone Number *</label>
-                <input type="tel" id="number" name="phoneNumber" required>
-
-                <label for="notes">Delivery Notes</label>
-                <textarea id="notes" name="deliveryNotes"></textarea>
-
-                <!-- Total Display -->
-                <div>
-                    <p>Total (<span id="total-items">1</span> item)</p>
-                    <p id="total-price">₱0.00</p> 
-                </div>
-                        
-                    <button type="submit">Place Order</button> 
-                </form>            
             </div>
         </main>
 
@@ -173,6 +171,8 @@
             let currentProductPrice = 0;
             let currentQuantity = 1;
 
+            const overlay = document.getElementById('order-popup');
+            const orderForm = document.getElementById('order-form');
             // Add active class on menu buttons
             const menuButtons = document.querySelectorAll('.menu-btn');
 
@@ -219,16 +219,28 @@
                 updateTotal();
 
                 // Show the popup
-                document.getElementById('order-popup').style.display = 'block';        
+                overlay.style.display = 'flex';   
             }
 
             // Function to close order popup
             function closeOrderPopup() {
-                document.getElementById('order-popup').classList.remove = 'block'
-                // Reset Form
-                document.getElementById('order-form').reset();
+                overlay.style.display = 'none';
+                // Reset form (if exists)
+                if (orderForm) orderForm.reset();
+
+                // Reset product vars (optional)
+                currentProductName = '';
+                currentProductPrice = 0;
+                currentQuantity = 1;
             }
 
+            
+            // Close when clicking outside the modal content
+            overlay.addEventListener('click', (e) => {
+                // if clicked directly on the overlay (not the inner modal box) -> close
+                if (e.target === overlay) closeOrderPopup();
+            });
+            
             // Function to increase quantity
             function increaseQty() {
             currentQuantity++; 
