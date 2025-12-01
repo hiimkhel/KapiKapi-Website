@@ -3,7 +3,15 @@ include "../config.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Values Expected
+    // Ensure user is logged in
+    if (!isset($_SESSION["user_id"])) {
+        echo "User not logged in.";
+        exit();
+    }
+
+    $user_id = $_SESSION["user_id"];  // <-- get the logged-in user ID
+
+    // Sanitized Inputs
     $product = $_POST["product"];
     $quantity = $_POST["quantity"];
     $price = $_POST["price"];
@@ -16,19 +24,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $phone = $_POST["phoneNumber"];
     $notes = $_POST["deliveryNotes"];
 
-    // Inject values to the orders table
+    // Insert with prepared statement
     $sql = "INSERT INTO orders 
-            (product, quantity, price, total, street, barangay, city, province, zip, phone, notes)
-            VALUES 
-            ('$product', '$quantity', '$price', '$total', '$street', '$barangay', '$city', '$province', '$zip', '$phone', '$notes')";
+        (user_id, product, quantity, price, total, street, barangay, city, province, zip, phone, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Create a response of the database injection status
-    if ($conn->query($sql)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param(
+        "isidissssss", 
+        $user_id, $product, $quantity, $price, $total,
+        $street, $barangay, $city, $province, 
+        $zip, $phone, $notes
+    );
+
+    if ($stmt->execute()) {
         echo "Order stored successfully!";
     } else {
-        echo "Error saving order: " . $conn->error;
+        echo "Error saving order: " . $stmt->error;
     }
 
+    $stmt->close();
     exit();
 }
 ?>
