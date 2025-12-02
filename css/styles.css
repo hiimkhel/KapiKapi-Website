@@ -217,9 +217,10 @@ img{
 .join p {
     margin-bottom: 20px;
 }
-
+.hidden-btn{
+    display: none;
+}
 #logout-btn {
-    display: block !important; /* overrides .hidden */
     position: fixed;
     bottom: 20px;
     right: 20px;

@@ -76,7 +76,7 @@
 
         // Show button if user is logged in
         if (localStorage.getItem("user_id")) {
-            logoutBtn.classList.remove("hidden");
+            logoutBtn.classList.remove("hidden-btn");
         }
 
         // Logout functionality
