@@ -13,60 +13,84 @@
 <body>  
     <?php include("header.php"); ?>
     <!-- Home page-->
-<main>
+    <main>
 
-    <!-- Hero section-->
-    <section class="hero">
-        <div class="hero-content"></div>
-            <h1 class="hero-title">Slow Sips, Cozy</h1>
-            <h1 class="hero-title">Moments.</h1>
-            <p class="hero-desc">The ultimate spot inspired by the world's most relaxed animal.</p>
-            <a href="#" class="primary-btn">Explore Our Menu</a>
-        </div>
-    </section>
-
-
-    <!-- Featured Treats section -->
-    <section class="featured">
-        <h2>Featured Treats</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <img src="../images/featured/capycino-latte.png" alt="CapyCino Latte">
-                <h3>CapyCino Latte</h3>
-                <p>Our signature latte with adorable latte art</p>
-                <a href="#" class="view-btn">View in Menu</a>
+        <!-- Hero section-->
+        <section class="hero">
+            <div class="hero-content"></div>
+                <h1 class="hero-title">Slow Sips, Cozy</h1>
+                <h1 class="hero-title">Moments.</h1>
+                <p class="hero-desc">The ultimate spot inspired by the world's most relaxed animal.</p>
+                <a href="#" class="primary-btn">Explore Our Menu</a>
             </div>
-
-            <div class="card">
-                <img src="../images/featured/capybuns.png" alt="Capy Buns">
-                <h3>Capy Buns</h3>
-                <p>Soft, golden buns baked fresh daily</p>
-                <a href="#" class="view-btn">View in Menu</a>
-            </div>
-
-            <div class="card">
-                <img src="../images/featured/leaf-nibble-matcha.png" alt="Leaf-Nibble Matcha">
-                <h3>Leaf-Nibble Matcha</h3>
-                <p>Premium ceremonial matcha for a zen boost</p>
-                <a href="#" class="view-btn">View in Menu</a>
-            </div>
-
-        </div> <!-- end .cards -->
-    </section>
+        </section>
 
 
-    <!-- Join Section -->
-    <section class="join">
-        <img src="../images/star-inside-circle.png">
-        <h2>Join the Capy Club</h2>
-        <p>Sign up to start ordering your favorite treats online and maximize the chill.</p>
-        <a href="/register.html" class="primary-btn">Create Account</a>
-    </section>
+        <!-- Featured Treats section -->
+        <section class="featured">
+            <h2>Featured Treats</h2>
 
-</main>
+            <div class="cards">
 
+                <div class="card">
+                    <img src="../images/featured/capycino-latte.png" alt="CapyCino Latte">
+                    <h3>CapyCino Latte</h3>
+                    <p>Our signature latte with adorable latte art</p>
+                    <a href="#" class="view-btn">View in Menu</a>
+                </div>
+
+                <div class="card">
+                    <img src="../images/featured/capybuns.png" alt="Capy Buns">
+                    <h3>Capy Buns</h3>
+                    <p>Soft, golden buns baked fresh daily</p>
+                    <a href="#" class="view-btn">View in Menu</a>
+                </div>
+
+                <div class="card">
+                    <img src="../images/featured/leaf-nibble-matcha.png" alt="Leaf-Nibble Matcha">
+                    <h3>Leaf-Nibble Matcha</h3>
+                    <p>Premium ceremonial matcha for a zen boost</p>
+                    <a href="#" class="view-btn">View in Menu</a>
+                </div>
+
+            </div> <!-- end .cards -->
+        </section>
+
+
+        <!-- Join Section -->
+        <section class="join">
+            <img src="../images/star-inside-circle.png">
+            <h2>Join the Capy Club</h2>
+            <p>Sign up to start ordering your favorite treats online and maximize the chill.</p>
+            <a href="/register.html" class="primary-btn">Create Account</a>
+        </section>
+
+        <button id="logout-btn" class="hidden-btn">Logout</button>
+
+    </main>
+    
     <?php include("footer.php"); ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const logoutBtn = document.getElementById("logout-btn");
+
+        // Show button if user is logged in
+        if (localStorage.getItem("user_id")) {
+            logoutBtn.classList.remove("hidden");
+        }
+
+        // Logout functionality
+        logoutBtn.addEventListener("click", () => {
+            // Remove user data from localStorage
+            localStorage.removeItem("user_id");
+            localStorage.removeItem("name");
+
+            alert("You have been logged out.");
+
+            // Optionally redirect to login page
+            window.location.href = "login-register.php";
+        });
+    });
+    </script>
 </body>
 </html>

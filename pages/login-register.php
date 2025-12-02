@@ -50,6 +50,8 @@
         </form>
 
     </div>
+
+    <button id="logout-btn" class="hidden-btn">Logout</button>
 </main>
 
 <?php include("footer.php") ?>
