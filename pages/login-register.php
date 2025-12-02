@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="../images/logo-nobg.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comic+Neue&family=Quicksand:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<title>KapiKapi Cafe</title>
 <title>KapiKapi | Login & Register</title>
 <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -27,22 +31,22 @@
 
         <!-- LOGIN FORM -->
         <form id="authLoginForm" class="auth-form">
-            <label>Username</label>
-            <input type="text" name="username" required>
-            <label>Password</label>
-            <input type="password" name="password" required>
-            <button type="submit">Login</button>
+            <label class="auth-label">Username</label>
+            <input class="auth-input" type="text" name="username" required>
+            <label class="auth-label">Password</label>
+            <input class="auth-input" type="password" name="password" required>
+            <button class="auth-btn" type="submit">Login</button>
         </form>
 
         <!-- REGISTER FORM -->
         <form id="authRegisterForm" class="auth-form auth-hidden">
-            <label>Username</label>
-            <input type="text" name="username" required>
-            <label>Email</label>
-            <input type="email" name="email" required>
-            <label>Password</label>
-            <input type="password" name="password" required>
-            <button type="submit">Create Account</button>
+            <label class="auth-label">Username</label>
+            <input class="auth-input" type="text" name="username" required>
+            <label class="auth-label">Email</label>
+            <input class="auth-input" type="email" name="email" required>
+            <label class="auth-label">Password</label>
+            <input class="auth-input" type="password" name="password" required>
+            <button class="auth-btn" type="submit">Create Account</button>
         </form>
 
     </div>
@@ -81,6 +85,8 @@ loginForm.addEventListener("submit", async (e) => {
         const json = await res.json();
 
         if (json.success) {
+            localStorage.setItem("user_id", json.user_id);
+            localStorage.setItem("name", json.name);
             alert(json.message);
             window.location.href = "../pages/index.php";
         } else {
@@ -102,8 +108,11 @@ registerForm.addEventListener("submit", async (e) => {
         const json = await res.json();
 
         if (json.success) {
+            localStorage.setItem("user_id", json.user_id);
+            localStorage.setItem("name", json.name);
             alert(json.message);
             window.location.href = "../pages/index.php";
+
         } else {
             alert(json.error);
         }

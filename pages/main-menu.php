@@ -272,7 +272,7 @@
                 event.preventDefault();
 
                 const formData = new FormData(document.getElementById("order-form"));
-
+                formData.append("user_id", userId);
                 fetch("../save_order.php", {
                     method: "POST",
                     body: formData
