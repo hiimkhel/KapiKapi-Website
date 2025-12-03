@@ -27,7 +27,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <a class="primary-btn header-btns" href="./login-register.php">Register</a>
         <?php else: ?>
             <form method="post" action="logout.php" style="display:inline;">
-                <button type="submit" class="primary-btn header-btns">Logout</button>
+                <button type="submit" class="logout-btn">Logout</button>
             </form>
         <?php endif; ?>
     </div>

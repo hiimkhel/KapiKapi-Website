@@ -222,15 +222,24 @@ img{
 .hidden-btn{
     display: none;
 }
-#logout-btn{
-    background-color: #ff4d4f;
-    color: white;
-    border: none;
-    border-radius: 8px;
+/* LOGOUT BUTTON STYLING */
+.logout-btn {
+    padding: 10px 24px;
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--supporting-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    transform: scale(1.05);
 }
 /* MENU STYLINGS */
 main{
