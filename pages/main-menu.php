@@ -162,7 +162,25 @@
                     </form>
                 </div>
             </div>
-
+            <div id="response-popup" class="response-popup hidden-popup">
+                <div class="response-card">
+                    <p id="response-message"></p>
+                    <button onclick="closeResponsePopup()">OK</button>
+                </div>
+            </div>
+            <?php 
+            if (isset($_SESSION["response_message"])) {
+                $msg = $_SESSION["response_message"];
+                echo "
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.getElementById('response-popup').classList.remove('hidden');
+                        document.getElementById('response-message').innerText = '$msg';
+                    });
+                </script>";
+                unset($_SESSION["response_message"]);
+            }
+            ?>
             <button id="logout-btn" class="hidden-btn">Logout</button>
         </main>
 
@@ -267,8 +285,16 @@
                 const total = currentProductPrice * currentQuantity;
                 document.getElementById('total-price').textContent = '₱' + total.toFixed(2);
                 document.getElementById('total-items').textContent = currentQuantity;
+                document.getElementById("product").value = currentProductName;
+                document.getElementById("quantity").value = currentQuantity;
+                document.getElementById("price").value = currentProductPrice;
+                document.getElementById("total").value = (currentProductPrice * currentQuantity).toFixed(2);
             }
             
+            // Function to handle popup status
+            function closeResponsePopup() {
+                document.getElementById("response-popup").classList.add("hidden");
+            }
             // Function to handle form submission
             function submitOrder(event) {
                 event.preventDefault();
@@ -289,5 +315,6 @@
                 });
             }
         </script>
+         
     </body>
     </html>

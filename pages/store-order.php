@@ -6,7 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Ensure user is logged in
     if (!isset($_SESSION["user_id"])) {
-        echo "User not logged in.";
+        $_SESSION["response_message"] = " [!] You must be logged in to order.";
+        header("Location: main-menu.php");
         exit();
     }
 
@@ -32,18 +33,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "siiddsssssss", 
+        "ssiddsssssss", 
         $user_id, $product, $quantity, $price, $total,
         $street, $barangay, $city, $province, 
         $zip, $phone, $notes
     );
 
     if ($stmt->execute()) {
-        echo "Order stored successfully!";
+        $_SESSION["response_message"] = "Order placed successfully!";
     } else {
-        echo "Error saving order: " . $stmt->error;
+        $_SESSION["response_message"] = "Failed to place order: " . $stmt->error;
     }
 
+    header("Location: main-menu.php");
     $stmt->close();
     exit();
 }

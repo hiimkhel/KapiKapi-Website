@@ -24,3 +24,26 @@
             <a class="primary-btn header-btns" href="./login-register.php">Register</a>
         </div>
     </header>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logout-btn");
+
+    if (logoutBtn) {
+        // Show button if user is logged in
+        if (localStorage.getItem("user_id")) {
+            logoutBtn.classList.remove("hidden-btn");
+        }
+
+        // Logout functionality
+        logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem("user_id");
+            localStorage.removeItem("name");
+
+            alert("You have been logged out.");
+
+            window.location.href = "../pages/login-register.php";
+        });
+    }
+});
+</script>

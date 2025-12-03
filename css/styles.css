@@ -521,6 +521,56 @@ main{
 #order-popup form button[type="submit"]:hover {
     background-color: #444;
 }
+.response-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.response-popup.hidden-popup {
+    display: none;
+}
+
+.response-card {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.response-card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.response-card button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #6E4B3A;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.response-card button:hover {
+    background: #5a3e30;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
 /* --- Popup Animation --- */
 @keyframes popupFade {
