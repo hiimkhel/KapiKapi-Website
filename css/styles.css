@@ -222,14 +222,10 @@ img{
 .hidden-btn{
     display: none;
 }
-#logout-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+#logout-btn{
     background-color: #ff4d4f;
     color: white;
     border: none;
-    padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);

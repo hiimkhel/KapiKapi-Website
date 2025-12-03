@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $user_id = $_SESSION["user_id"];  // <-- get the logged-in user ID
 
-    // Sanitized Inputs
+    // Sanitized Inputsq
     $product = $_POST["product"];
     $quantity = $_POST["quantity"];
     $price = $_POST["price"];
