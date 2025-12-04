@@ -1,68 +1,79 @@
-const loginTab = document.getElementById("authLoginTab");
-const registerTab = document.getElementById("authRegisterTab");
-const loginForm = document.getElementById("authLoginForm");
-const registerForm = document.getElementById("authRegisterForm");
+const overlay = document.getElementById('order-popup');
+            let currentProductName = '';
+            let currentProductPrice = 0;
+            let currentQuantity = 1;
 
+            // Show/hide sections
+            function showSection(sectionId) {
+                document.getElementById('food-section').style.display = 'none';
+                document.getElementById('merch-section').style.display = 'none';
+                document.getElementById(sectionId).style.display = 'grid';
+            }
 
-console.log("js connected");
-// Tab switch
-loginTab.onclick = () => {
-    loginTab.classList.add("active");
-    registerTab.classList.remove("active");
-    loginForm.classList.remove("auth-hidden");
-    registerForm.classList.add("auth-hidden");
-};
+            // Order popup logic
+            function showOrderPopUp(name, price, img) {
+                currentProductName = name;
+                currentProductPrice = price;
+                currentQuantity = 1;
 
-registerTab.onclick = () => {
-    registerTab.classList.add("active");
-    loginTab.classList.remove("active");
-    loginForm.classList.add("auth-hidden");
-    registerForm.classList.remove("auth-hidden");
-};
+                const popupCard = document.querySelector('.popup-card');
 
-// LOGIN
-loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const data = new FormData(loginForm);
+                popupCard.innerHTML = isLoggedIn
+                    ? `
+                    <div class="popup-header">
+                        <h2>Complete Your Order</h2>
+                        <button onclick="closeOrderPopup()">×</button>
+                    </div>
+                    <div class="popup-product-info">
+                        <img src="${img}" alt="${name}">
+                        <div>
+                            <h3>${name}</h3>
+                            <p>₱${price}</p>
+                        </div>
+                        <div>
+                            <button onclick="decreaseQty()">-</button>
+                            <span id="qty-value">1</span>
+                            <button onclick="increaseQty()">+</button>
+                        </div>
+                    </div>
+                    <form id="order-form" action="store-order.php" method="post">
+                        <input type="hidden" name="product" value="${name}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="price" value="${price}">
+                        <input type="hidden" name="total" value="${price}">
+                        <label>Street Address *</label><input type="text" name="streetAddress" required>
+                        <label>Barangay *</label><input type="text" name="barangay" required>
+                        <label>City *</label><input type="text" name="city" required>
+                        <label>Province *</label><input type="text" name="province" required>
+                        <label>Zip Code *</label><input type="text" name="zipCode" pattern="\\d{4}" required>
+                        <label>Phone Number *</label><input type="tel" name="phoneNumber" required>
+                        <label>Delivery Notes</label><textarea name="deliveryNotes"></textarea>
+                        <button type="submit">Place Order</button>
+                    </form>
+                    `
+                    : `
+                    <div class="popup-header">
+                        <h2>Not Logged In</h2>
+                        <button onclick="closeOrderPopup()">×</button>
+                    </div>
+                    <p style="padding:20px; text-align:center;">You must be logged in to place an order.</p>
+                    `;
 
-    try {
-        const res = await fetch("login.php", { method: "POST", body: data });
-        const json = await res.json();
+                overlay.style.display = 'flex';
+            }
 
-        if (json.success) {
-            localStorage.setItem("user_id", json.user_id);
-            localStorage.setItem("name", json.name);
-            alert(json.message);
-            window.location.href = "../pages/index.php";
-        } else {
-            alert(json.error);
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Login error");
-    }
-});
+            // Quantity controls
+            function increaseQty() {
+                currentQuantity++;
+                document.getElementById('qty-value').textContent = currentQuantity;
+            }
+            function decreaseQty() {
+                if(currentQuantity>1){currentQuantity--; document.getElementById('qty-value').textContent = currentQuantity;}
+            }
 
-// REGISTER
-registerForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const data = new FormData(registerForm);
+            // Close popup
+            function closeOrderPopup() { overlay.style.display = 'none'; }
 
-    try {
-        const res = await fetch("register.php", { method: "POST", body: data });
-        const json = await res.json();
-
-        if (json.success) {
-            localStorage.setItem("user_id", json.user_id);
-            localStorage.setItem("name", json.name);
-            alert(json.message);
-            window.location.href = "../pages/index.php";
-
-        } else {
-            alert(json.error);
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Registration error");
-    }
-});
+            overlay.addEventListener('click', e => {
+                if(e.target === overlay) closeOrderPopup();
+            });
