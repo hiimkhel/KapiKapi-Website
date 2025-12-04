@@ -64,7 +64,7 @@
 
                 <!-- Right Side - Contact Form -->
                 <div id="contact-form-card">
-                    <form id="contact-form">
+                    <form id="contact-form" action="store-feedback.php" method="post">
                         <!-- First Name and Last Name -->
                         <div id="name-fields">
                             <input class="contact-input" type="text" id="firstName" name="firstName" placeholder="First Name" required>
@@ -97,4 +97,6 @@
     </main>
 
     <?php include("footer.php")?>
+
+
 </body>

@@ -105,7 +105,10 @@
                         <!-- Content injected by JS -->
                     </div>
                 </div>
+
+                
             </main>
+            
 
             <script>
             const overlay = document.getElementById('order-popup');
@@ -188,6 +191,6 @@
                 if(e.target === overlay) closeOrderPopup();
             });
             </script>
-         
+        <?php include("./footer.php");?>
     </body>
     </html>
