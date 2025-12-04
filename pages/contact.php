@@ -29,7 +29,7 @@
                         <div id="location-details"> 
                             <h3>Location</h3>
                             <p>Luna St., La Paz</p>
-                            <p>Iloilo City, 5000 Iloilo5</p>
+                            <p>Iloilo City, 5000 Iloilo</p>
                         </div>
                     </div>
 
@@ -93,10 +93,60 @@
             </div>
         </div>
 
+       
         <button id="logout-btn" class="hidden-btn">Logout</button>
-    </main>
+    </main> 
+     <!-- Feedback response popup -->
+        <div id="feedback-popup" class="response-popup hidden-popup">
+            <div class="response-card">
+                <button id="popup-close">&times;</button>
+                <h3 id="popup-title"></h3>
+                <p id="popup-message"></p>
+            </div>
+        </div>
 
     <?php include("footer.php")?>
 
+    <script>
+        const contactForm = document.getElementById("contact-form");
+        const popup = document.getElementById("feedback-popup");
+        const popupTitle = document.getElementById("popup-title");
+        const popupMessage = document.getElementById("popup-message");
+        const popupClose = document.getElementById("popup-close");
 
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+
+            fetch('./store-feedback.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                popupTitle.textContent = data.status === "success" ? "Success!" : "Error";
+                popupMessage.textContent = data.message;
+
+                // Show popup
+                popup.classList.remove("hidden-popup");
+
+                if (data.status === "success") {
+                    contactForm.reset();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                popupTitle.textContent = "Error";
+                popupMessage.textContent = "Something went wrong!";
+                popup.classList.remove("hidden-popup");
+            });
+        });
+
+        // Close popup
+        popupClose.addEventListener("click", () => {
+            popup.classList.add("hidden-popup");
+        });
+
+    </script>
 </body>
