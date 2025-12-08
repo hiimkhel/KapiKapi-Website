@@ -26,11 +26,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <a class="transparent-btn header-btns" href="./login-register.php">Login</a>
             <a class="primary-btn header-btns" href="./login-register.php">Register</a>
         <?php else: ?>
+            <a class="primary-btn" href="profile.php">Profile</a>
             <form method="post" action="logout.php" style="display:inline;">
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
-            <!-- Delete Account Button -->
-            <button id="delete-account-btn" class="delete-account-btn">Delete Account</button>
+            
         <?php endif; ?>
     </div>
 </header>

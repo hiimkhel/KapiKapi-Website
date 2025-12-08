@@ -37,10 +37,6 @@ function createMenuArticle(item) {
     let adminButtons = '';
     if (isLoggedIn) {
         adminButtons = `
-            <div class="admin-actions">
-                <a href="edit.php?id=${item.id}" class="edit-btn">✏️</a>
-                <a href="delete.php?id=${item.id}" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-            </div>
         `;
     }
 

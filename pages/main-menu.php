@@ -32,13 +32,6 @@
                 <!-- Food & Drinks Section -->
                 <section id="food-section">
                     <article>
-                        <img src="../images/featured/capycino-latte.png" alt="">
-                        <h2>CapyCino Latte</h2>
-                        <p>Rich espresso with steamed milk and cute capybara foam art</p>
-                        <p>₱180.00</p>
-                        <button onclick="showOrderPopUp('CapyCino Latte', 180.00, '../images/featured/capycino-latte.png')">Order Now</button>
-                    </article>
-                    <article>
                         <img src="../images/mudbath-mocha.png" alt="">
                         <h2>Mudbath Mocha</h2>
                         <p>Decadent dark chocolate mocha with whipped cream "mud"</p>
