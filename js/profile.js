@@ -1,0 +1,6 @@
+document.querySelectorAll('.toggle-password').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const input = btn.previousElementSibling;
+        input.type = input.type === 'password' ? 'text' : 'password';
+    });
+});

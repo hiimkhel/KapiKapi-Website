@@ -43,10 +43,17 @@ if (!isset($_SESSION['user_id'])) {
                     <input type="password" name="current_password" required>
 
                     <label>New Password *</label>
-                    <input type="password" name="new_password" required>
+                    <div class="password-wrapper">
+                        <input type="password" name="new_password" required>
+                        <button class="toggle-password">👁</button>
+                    </div>
 
+                    
                     <label>Confirm New Password *</label>
-                    <input type="password" name="confirm_password" required>
+                    <div class="password-wrapper">
+                        <input type="password" name="confirm_password" required>
+                        <span class="toggle-password">👁</span>
+                    </div>
 
                     <button type="submit" class="btn">Update Password</button>
                 </form>
@@ -57,5 +64,7 @@ if (!isset($_SESSION['user_id'])) {
             
 
         <?php include("./footer.php");?>
+        <script src="../js/profile.js">
+        </script>
     </body>
     </html>
