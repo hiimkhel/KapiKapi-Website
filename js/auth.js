@@ -64,7 +64,5 @@ registerForm.addEventListener("submit", async (e) => {
         console.error(err);
         alert("Registration error");
     }
-    
-console.log("hatdog");
 });
 
