@@ -95,6 +95,25 @@ img{
 .login-and-register-btn{
     font-family: "Architects Daughter";
 }
+.delete-account-btn {
+    padding: 10px 24px;
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--supporting-color);
+    background-color: rgb(255, 98, 0);
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-account-btn:hover {
+    background-color: red;
+    color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
 /* HERO section */
 .hero {
     height: 500px;

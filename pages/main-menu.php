@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,10 +9,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comic+Neue&family=Quicksand:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
         <title>KapiKapi Cafe</title>
-        <script>
-        const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
-        console.log('isLoggedIn:', isLoggedIn);
-    </script>
     </head>
     <body> 
         <?php
@@ -36,10 +32,6 @@
                 <!-- Food & Drinks Section -->
                 <section id="food-section">
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/featured/capycino-latte.png" alt="">
                         <h2>CapyCino Latte</h2>
                         <p>Rich espresso with steamed milk and cute capybara foam art</p>
@@ -47,10 +39,6 @@
                         <button onclick="showOrderPopUp('CapyCino Latte', 180.00, '../images/featured/capycino-latte.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/mudbath-mocha.png" alt="">
                         <h2>Mudbath Mocha</h2>
                         <p>Decadent dark chocolate mocha with whipped cream "mud"</p>
@@ -58,10 +46,6 @@
                         <button onclick="showOrderPopUp('Mudbath Mocha', 200.00, '../images/mudbath-mocha.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/riverbank-iced-coffee.png" alt="">
                         <h2>Riverbank Iced Coffee</h2>
                         <p>Refreshing cold brew with a hint of mint and sweet cream</p>
@@ -69,10 +53,6 @@
                         <button onclick="showOrderPopUp('Riverbank Iced Coffee', 160.00, '../images/riverbank-iced-coffee.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/featured/leaf-nibble-matcha.png" alt="">
                         <h2>Leaf-Nibble Matcha</h2>
                         <p>Ceremonial grade matcha latte. Capybara's favorite greens.</p>
@@ -80,10 +60,6 @@
                         <button onclick="showOrderPopUp('Leaf-Nibble Matcha', 190.00, '../images/featured/leaf-nibble-matcha.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/featured/capybuns.png" alt="">
                         <h2>Capy Buns</h2>
                         <p>Two soft, sweet mini bread buns shaped like our mascot.</p>
@@ -91,10 +67,6 @@
                         <button onclick="showOrderPopUp('Capy Buns', 120.00, '../images/featured/capybuns.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/capy-pancakes.png" alt="">
                         <h2>Capy Pancakes</h2>
                         <p>Stacks of fluffy pancakes with drizzled butter and maple syrup.</p>
@@ -106,10 +78,6 @@
                 <!-- Merchandise Section -->
                 <section id="merch-section" style="display:none;">
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/capy-plushie.png" alt="">
                         <h2>Capy Plushie</h2>
                         <p>Super soft, huggable capybara plushie. The ultimate chill companion.</p>
@@ -117,10 +85,6 @@
                         <button onclick="showOrderPopUp('Capy Plushie', 190.00, '../images/capy-plushie.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                            <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                            <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                        </div>
                         <img src="../images/capymug.png" alt="">
                         <h2>KapiKapi Mug</h2>
                         <p>Ceramic mug with our mascot. Perfect for your morning slow sips.</p>
@@ -128,10 +92,6 @@
                         <button onclick="showOrderPopUp('KapiKapi Mug', 400.00, '../images/capymug.png')">Order Now</button>
                     </article>
                     <article>
-                         <div class="admin-actions">
-                        <a href="edit.php?id=1" class="edit-btn">✏️</a>
-                        <a href="delete.php?id=1" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-                    </div>
                         <img src="../images/slow-sips-tote.png" alt="">
                         <h2>Slow Sips Tote</h2>
                         <p>Eco-friendly canvas tote bag for carrying your essentials.</p>

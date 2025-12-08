@@ -1,4 +1,3 @@
-// menu.js
 console.log("Menu JS loaded");
 
 const overlay = document.getElementById('order-popup');
@@ -6,45 +5,47 @@ let currentProductName = '';
 let currentProductPrice = 0;
 let currentQuantity = 1;
 
-// Show/hide sections
+// Show/hide menu sections
 function showSection(sectionId) {
-    console.log("Switching section to:", sectionId);
-    document.getElementById('food-section').style.display = 'none';
-    document.getElementById('merch-section').style.display = 'none';
+    document.querySelectorAll('.menu-section').forEach(sec => sec.style.display = 'none');
     document.getElementById(sectionId).style.display = 'grid';
 }
 
+// Load menu from backend
 async function loadMenu() {
     try {
         const res = await fetch('../pages/get-menu.php');
-        const text = await res.text();
-        console.log("RAW JSON:", text); // debug
-        const data = JSON.parse(text);
-
+        const data = await res.json(); // Must return JSON with keys: food, merch
+        console.log(data);
         const foodSection = document.getElementById('food-section');
         const merchSection = document.getElementById('merch-section');
 
         foodSection.innerHTML = '';
         merchSection.innerHTML = '';
 
-        data.food.forEach(item => foodSection.innerHTML += createMenuArticle(item));
-        data.merch.forEach(item => merchSection.innerHTML += createMenuArticle(item));
+        data.food.forEach(item => foodSection.appendChild(createMenuArticle(item)));
+        data.merch.forEach(item => merchSection.appendChild(createMenuArticle(item)));
     } catch(err) {
-        console.error('Menu fetch failed:', err);
+        console.error("Failed to load menu:", err);
     }
 }
 
-
-
-// Create HTML element for each menu item safely
+// Create menu article element
 function createMenuArticle(item) {
     const article = document.createElement('article');
 
+    let adminButtons = '';
+    if (isLoggedIn) {
+        adminButtons = `
+            <div class="admin-actions">
+                <a href="edit.php?id=${item.id}" class="edit-btn">✏️</a>
+                <a href="delete.php?id=${item.id}" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
+            </div>
+        `;
+    }
+
     article.innerHTML = `
-        <div class="admin-actions">
-            <a href="edit.php?id=${item.id}" class="edit-btn">✏️</a>
-            <a href="delete.php?id=${item.id}" class="delete-btn" onclick="return confirm('Delete this item?');">🗑️</a>
-        </div>
+        ${adminButtons}
         <img src="${item.image}" alt="${item.name}">
         <h2>${item.name}</h2>
         <p>${item.description}</p>
@@ -52,19 +53,15 @@ function createMenuArticle(item) {
         <button class="order-btn">Order Now</button>
     `;
 
-    // Add click event safely
     article.querySelector('.order-btn').addEventListener('click', () => {
-        console.log("Ordering item:", item.name);
         showOrderPopUp(item.name, item.price, item.image);
     });
 
     return article;
 }
 
-// Order popup logic
+// Show order popup
 function showOrderPopUp(name, price, img) {
-    console.log("Showing order popup:", name, price, img);
-
     currentProductName = name;
     currentProductPrice = price;
     currentQuantity = 1;
@@ -115,24 +112,21 @@ function showOrderPopUp(name, price, img) {
     overlay.style.display = 'flex';
 }
 
-// Quantity controls
+// Quantity control
 function increaseQty() {
     currentQuantity++;
-    console.log("Quantity increased:", currentQuantity);
     document.getElementById('qty-value').textContent = currentQuantity;
 }
 
 function decreaseQty() {
     if (currentQuantity > 1) {
         currentQuantity--;
-        console.log("Quantity decreased:", currentQuantity);
         document.getElementById('qty-value').textContent = currentQuantity;
     }
 }
 
 // Close popup
 function closeOrderPopup() {
-    console.log("Closing popup");
     overlay.style.display = 'none';
 }
 

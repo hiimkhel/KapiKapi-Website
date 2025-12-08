@@ -12,8 +12,8 @@ $stmt = $conn->prepare("UPDATE menu SET name=?, description=?, price=?, image=?,
 $stmt->bind_param("ssdssi", $name, $description, $price, $image, $category, $id);
 
 if ($stmt->execute()) {
-    echo "<script>alert('Item updated successfully!'); window.location='menu.php';</script>";
+    echo "<script>alert('Item updated successfully!'); window.location='main-menu.php';</script>";
 } else {
-    echo "Update failed.";
+    echo "Update failed: " . $stmt->error;
 }
 ?>

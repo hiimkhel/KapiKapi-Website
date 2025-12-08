@@ -1,20 +1,18 @@
 <?php
 include("../config.php");
+
+$menuItems = [];
+
+$sql = "SELECT * FROM menu";
+$result = $conn->query($sql);
+
+if ($result && $result->num_rows > 0) {
+    $menuItems = $result->fetch_all(MYSQLI_ASSOC);
+}
+
+// Separate by category
+$food = array_filter($menuItems, fn($item) => $item['category'] === 'food');
+$merch = array_filter($menuItems, fn($item) => $item['category'] === 'merch');
+
 header('Content-Type: application/json');
-
-$foodResult = $conn->query("SELECT * FROM menu WHERE category='food' ORDER BY id DESC");
-$merchResult = $conn->query("SELECT * FROM menu WHERE category='merch' ORDER BY id DESC");
-
-$menu = [
-    'food' => [],
-    'merch' => []
-];
-
-while ($row = $foodResult->fetch_assoc()) {
-    $menu['food'][] = $row;
-}
-while ($row = $merchResult->fetch_assoc()) {
-    $menu['merch'][] = $row;
-}
-
-echo json_encode($menu);
+echo json_encode(['food' => array_values($food), 'merch' => array_values($merch)]);

@@ -29,6 +29,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <form method="post" action="logout.php" style="display:inline;">
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
+            <!-- Delete Account Button -->
+            <button id="delete-account-btn" class="delete-account-btn">Delete Account</button>
         <?php endif; ?>
     </div>
 </header>
@@ -36,4 +38,29 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <script>
     // Pass PHP session status to JS
     const isLoggedIn = <?= $loggedIn ? 'true' : 'false'; ?>;
+    
+    if (isLoggedIn) {
+    const deleteBtn = document.getElementById('delete-account-btn');
+
+    deleteBtn.addEventListener('click', () => {
+        const confirmed = confirm("Are you sure you want to delete your account? This action cannot be undone.");
+        if (confirmed) {
+            fetch('../pages/delete-account.php', { // adjust path if needed
+                method: 'POST',
+                credentials: 'same-origin'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success){
+                    alert("Your account has been deleted.");
+                    window.location.href = "./index.php"; // redirect to homepage
+                } else {
+                    alert("Failed to delete account. " + (data.message || ""));
+                }
+            })
+            .catch(err => console.error('Delete account error:', err));
+        }
+    });
+}
+
 </script>

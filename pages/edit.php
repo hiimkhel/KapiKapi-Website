@@ -1,21 +1,28 @@
 <?php
-include("../config.php");
+include("../config.php"); // database connection
+$id = $_GET['id'] ?? null; // get item id safely
 
-$id = $_GET['id'];
+if (!$id) {
+    die("No menu item specified.");
+}
 
+// Fetch item from database
 $stmt = $conn->prepare("SELECT * FROM menu WHERE id=?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $item = $stmt->get_result()->fetch_assoc();
-?>
 
+if (!$item) {
+    die("Menu item not found.");
+}
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Edit Menu Item</title>
 </head>
 <body>
-
 <h2>Edit Menu Item</h2>
 
 <form action="update.php" method="POST">
@@ -41,6 +48,5 @@ $item = $stmt->get_result()->fetch_assoc();
 
     <button type="submit">Update Item</button>
 </form>
-
 </body>
 </html>
