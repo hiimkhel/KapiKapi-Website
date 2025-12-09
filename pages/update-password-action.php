@@ -52,6 +52,8 @@ $update_stmt->bind_param("si", $new_hashed_password, $user_id);
 
 if ($update_stmt->execute()) {
     $_SESSION['success'] = "Password updated successfully! 🐾";
+    header("Location: profile.php");
+    exit;
 } else {
     $_SESSION['error'] = "Failed to update password. Please try again.";
 }

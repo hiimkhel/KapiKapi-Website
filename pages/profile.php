@@ -47,6 +47,7 @@ foreach ($orders as $order) {
         ];
     }
     $grouped_orders[$time_key]['items'][] = [
+        'id' => $order['id'],
         'name' => $order['product_name'],
         'quantity' => $order['quantity'],
         'price' => $order['price']
@@ -96,7 +97,7 @@ krsort($grouped_orders);
                                 <div class="order-item">
                                     <div class="order-header-section">
                                         <div>
-                                            <div class="order-id">Order #<?= str_pad($order_number, 5, '0', STR_PAD_LEFT) ?></div>
+                                            <div class="order-id">Order #<?= str_pad($order['items'][0]['id'], 5, '0', STR_PAD_LEFT) ?></div>
                                             <div class="order-date"><?= date('F j, Y - g:i A', strtotime($order['date'])) ?></div>
                                         </div>
                                     </div>

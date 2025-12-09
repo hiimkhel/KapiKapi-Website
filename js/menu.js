@@ -67,7 +67,7 @@ function showOrderPopUp(name, price, img) {
                 <h3>${name}</h3>
                 <p>₱${price}</p>
             </div>
-            <div>
+            <div class="popup-quantity-control">
                 <button onclick="decreaseQty()">-</button>
                 <span id="qty-value">1</span>
                 <button onclick="increaseQty()">+</button>

@@ -20,9 +20,10 @@ if (!isset($_SESSION['user_id'])) {
 
            
         <main class="profile-page">
-            <h1>🐾 Update Password</h1>
+            
 
             <div class="profile-card">
+                <h1>🐾 Update Password</h1>
                 <img src="../images/logo-nobg.png" alt="Capybara" class="capy-img">
                 <h2>Change Your Password</h2>
                 <p>Keep it safe and chill like a capybara. 🛋️☕</p>
