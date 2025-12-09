@@ -873,7 +873,6 @@ article img{
 
 #content-wrapper{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;    
     padding: 1em;
     gap: 24px;
@@ -1032,7 +1031,7 @@ article img{
 }
 .popup-header{
     display: flex;
-    
+    justify-content: space-between;
     align-items: center;
     text-align: center;
 }
@@ -1428,6 +1427,12 @@ article img{
 }
 
 @media screen and (max-width: 768px) {
+    #content-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
     .profile-page {
         padding: 10px 10px 30px; 
     }
