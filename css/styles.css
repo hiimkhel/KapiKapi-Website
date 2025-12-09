@@ -273,6 +273,9 @@ main{
 }
 .menu-header{
     padding: 3em;
+    word-wrap: break-word;  /* Old property, still works */
+    overflow-wrap: break-word; /* Standard */
+    white-space: normal;      /* Allow wrapping */
 }
 .menu-toggle-btns{
     align-self: center;
@@ -638,44 +641,56 @@ article img{
     to { transform: scale(1); opacity: 1; }
 }
 /* ABOUT PAGE STYLINGS */
-.about-header{
+.about-header {
     width: 100%;
-    height: 100px;
-    align-content: center;
+    height: 150px; /* Increased height so text breathes */
+    display: flex; /* Centers text perfectly */
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(rgba(138, 138, 138, 0.5), rgba(0, 0, 0, 0.5)),
                 url("../images/Herobg.png");
+    background-size: cover; /* FIX: Image won't zoom in weirdly */
+    background-position: center;
     font-family: var(--logo-font);
     color: white;
     font-size: 24px;
+    text-align: center;
 }
-#why-box{
+
+/* --- WHY BOX (The Main Fix) --- */
+#why-box {
     padding: 2.5em;
     color: var(--primary-color);
     display: flex;
+    flex-wrap: wrap; /* FIX: Allows logo and text to stack on mobile */
     width: 100%;
-    justify-self: center;
     justify-content: center;
-    text-align: left;
+    align-items: center; /* Aligns items vertically */
     gap: 54px;
     position: relative;
+    box-sizing: border-box; /* FIX: Padding won't break the layout width */
 }
+
+/* --- LOGO --- */
 .logo-container {
     position: relative;
     width: 150px;
     height: 150px;
+    flex-shrink: 0; /* FIX: Prevents logo from squashing */
 }
 
+/* Keep your existing logo shadow logic, but we will tweak it for mobile below */
 .logo-container::before {
     content: '';
     position: absolute;
-    left: -12px; /* shift to left */
+    left: -12px;
     top: 50%;
     transform: translateY(-50%);
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    background-color: var(--secondary-color); /* solid shadow color */
-    z-index: 1; /* behind the image */
+    background-color: var(--secondary-color);
+    z-index: 1;
 }
 
 .logo-container img {
@@ -683,34 +698,66 @@ article img{
     height: 100%;
     border-radius: 50%;
     position: relative;
-    z-index: 2; /* above shadow */
+    z-index: 2;
+    object-fit: cover;
 }
 
-.text-bold{
-    font-weight: bold;
-}
-.about-content{
-    width: 500px;
+.about-content {
+    width: 100%;
+    max-width: 500px; /* FIX: Fluid width (max 500px, but can get smaller) */
     padding: 12px;
+    box-sizing: border-box;
 }
-.about-content p{
-    margin-top: 24px;
-}
-.philosophy-container{
+
+/* --- PHILOSOPHY SECTION --- */
+.philosophy-container {
     display: flex;
     justify-content: center;
     padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
 }
-#philosophy-box{
+
+#philosophy-box {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 30px;
     text-align: left;
-    width: 800px;
+    width: 100%; 
+    max-width: 800px; /* FIX: Fluid width for the box */
     color: var(--primary-color);
     justify-self: center;
     border-radius: 12px;
     background-color: var(--secondary-color);
+    box-sizing: border-box;
+}
+
+/* --- NEW MOBILE RESPONSIVE SECTION --- */
+/* Add this to the very bottom of your CSS file */
+@media (max-width: 768px) {
+    #why-box {
+        flex-direction: column; /* Stack vertically */
+        text-align: center; /* Center text */
+        gap: 30px;
+        padding: 1.5em;
+    }
+
+    .about-content {
+        text-align: center;
+        padding: 0;
+    }
+
+    /* Center the shadow behind the logo on mobile */
+    .logo-container::before {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Center philosophy text on mobile */
+    #philosophy-box {
+        text-align: center;
+        padding: 20px;
+    }
 }
 /* LOGIN AND REGISTER PAGE */
 .auth-page {
@@ -823,27 +870,53 @@ article img{
     font-family: var(--logo-font);
     font-size: 52px;
 }
+
+/* >>> RESPONSIVE IMPROVEMENT: Flexible Content Wrapper <<< */
 #content-wrapper{
     display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap/stack */
+    justify-content: center; /* Centers cards when stacked or side-by-side */
     padding: 1em;
     gap: 24px;
+    max-width: 1200px; /* Limits overall width on large screens */
+    width: 100%;
+    margin: 0 auto;
 }
+
 #contact-info-card,
 #contact-form-card{
     background-color: whitesmoke;
     padding: 2.4em;
-    width: 450px;
+    /* RESPONSIVE CHANGE: Use max-width and flex properties instead of fixed width */
+    max-width: 450px; 
+    flex-basis: 450px; 
+    flex-grow: 1;    
     border-radius: 24px;
     box-shadow: 0px 12px 12px var(--primary-color);
-    
 }
+
+/* Media Query for stacking on smaller screens */
+@media screen and (max-width: 800px) {
+    #contact-info-card,
+    #contact-form-card {
+        /* These properties ensure the cards take up the full width (100%) of the container */
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    
+    /* You may also want to increase padding on the container itself for small screens */
+    #contact-container {
+        padding: 1em; /* Reduce large padding if needed */
+    }
+}
+
 #contact-info-card{
     text-align: left;
 }
 #contact-form-card{
     font-family: var(--primary-font);
-
 }
+
 /* Entire Form */
 #contact-form {
     display: flex;
@@ -870,6 +943,14 @@ article img{
     font-size: 16px;
     background-color: var(--supporting-color);
     transition: border 0.25s ease, box-shadow 0.25s ease;
+    /* BEST PRACTICE: Include box-sizing */
+    box-sizing: border-box; 
+}
+
+/* Input Placeholder (Added for better accessibility/contrast) */
+.contact-input::placeholder {
+    color: rgba(0, 0, 0, 0.5); 
+    opacity: 1; 
 }
 
 /* Focus Effect */
@@ -881,8 +962,11 @@ article img{
 
 /* Textarea */
 #message-field textarea {
-    resize: none;
+    resize: vertical; /* Only allow vertical resizing */
+    min-height: 150px; /* Minimum height for usability */
 }
+
+/* Contact Info Section */
 .contact-info-section {
     display: flex;
     align-items: center;
@@ -912,6 +996,9 @@ article img{
     transform: scale(1.3);          
     opacity: 1;
 }
+
+/* --- POPUP STYLING (No changes needed) --- */
+
 /* Popup Background */
 #feedback-popup.response-popup {
     position: fixed;
@@ -966,7 +1053,9 @@ article img{
 #feedback-popup .response-card button#popup-close:hover {
     background: #8a654c;
 }
-/* PROFILE STYLING*/
+
+/* --- PROFILE STYLING --- */
+
 .profile-page {
     display: flex;
     justify-content: center;
@@ -974,7 +1063,7 @@ article img{
     flex-direction: column;
     padding: 50px 20px;
     background-color: #FAF4EA; /* light cozy background */
-    min-height: 80vh;
+    min-height: 100vh; /* Ensures full vertical coverage */
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -983,8 +1072,12 @@ article img{
     padding: 40px 30px;
     border-radius: 20px;
     text-align: center;
+    /* RESPONSIVE CHANGE: Added width: 90% */
     max-width: 450px;
+    width: 90%; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    /* BEST PRACTICE: Include box-sizing */
+    box-sizing: border-box; 
 }
 
 .profile-card .capy-img {
@@ -1029,9 +1122,13 @@ article img{
     background-color: #e05f5f;
     color: #fff;
 }
+
 .profile-actions .delete-btn:hover{
-    background-color: red;
+    /* REVISED: Use a slightly darker shade for smooth hover */
+    background-color: #c45252; 
+    transform: scale(1.05);
 }
+
 .password-form {
     display: flex;
     flex-direction: column;
@@ -1050,6 +1147,7 @@ article img{
     border-radius: 10px;
     border: 1px solid #C4B5A0;
     font-size: 1rem;
+    box-sizing: border-box; /* BEST PRACTICE: Added for inputs */
 }
 
 .password-form .btn {
@@ -1064,8 +1162,6 @@ article img{
 .password-form .btn:hover {
     transform: scale(1.05);
 }
-
-
 
 .error-msg {
     color: #D8000C; /* red */
@@ -1102,6 +1198,7 @@ article img{
     border: none;
     background: none;
 }
+
 
 /* FOOTER STYLINGS */
 footer{
@@ -1271,6 +1368,9 @@ footer{
         flex-direction: column;
         align-items: center;
     }
+    .hero-title{
+        font-size: 3rem;
+    }
     .footer-section {
         flex-direction: column;
         align-items: center;
@@ -1294,8 +1394,43 @@ footer{
         font-size: 16px; /* slightly smaller font */
         padding: 10px;
     }
+    
+    #food-section,
+    #merch-section {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+
+    .menu-toggle-btns {
+        gap: 10px;
+    }
+
+    #order-popup .popup-card {
+        width: 95%;
+        padding: 15px;
+    }
+
 }
 @media screen and (max-width: 480px) {
+    .hero-title{
+        font-size: 2rem;
+    }
+    .hero-desc{
+        font-size: .8rem;
+    }
+    .menu-header{
+        width: 400px;
+        padding: .5em;
+        
+        
+    }
+    .menu-title{
+        font-size: 1.2rem;
+    }
+    .menu-description{
+        font-size: .4rem;
+        text-align: left;
+    }
     .footer-content h3 {
         font-size: 1.2rem; /* smaller headings */
     }
