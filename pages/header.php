@@ -13,7 +13,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <!-- Navigation -->
-    <nav>
+    <nav class="nav-links">
         <a href="./index.php" class="<?= ($currentPage == 'index.php') ? 'active' : '' ?>">Home</a>
         <a href="./main-menu.php" class="<?= ($currentPage == 'main-menu.php') ? 'active' : '' ?>">Menu</a>
         <a href="./about.php" class="<?= ($currentPage == 'about.php') ? 'active' : '' ?>">About</a>
@@ -33,7 +33,34 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             
         <?php endif; ?>
     </div>
+
+     <!-- Burger Menu Button -->
+    <button class="burger-btn" id="burger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 </header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu hidden" id="mobile-menu">
+    <nav>
+        <a href="./index.php" class="<?= ($currentPage == 'index.php') ? 'active' : '' ?>">Home</a>
+        <a href="./main-menu.php" class="<?= ($currentPage == 'main-menu.php') ? 'active' : '' ?>">Menu</a>
+        <a href="./about.php" class="<?= ($currentPage == 'about.php') ? 'active' : '' ?>">About</a>
+        <a href="./contact.php" class="<?= ($currentPage == 'contact.php') ? 'active' : '' ?>">Contacts</a>
+        <?php if (!$loggedIn): ?>
+            <a class="transparent-btn" href="./login-register.php">Login</a>
+            <a class="primary-btn" href="./login-register.php">Register</a>
+        <?php else: ?>
+            <a class="primary-btn" href="profile.php">Profile</a>
+            <form method="post" action="logout.php">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        <?php endif; ?>
+    </nav>
+</div>
+
 
 <script>
     // Pass PHP session status to JS
@@ -61,6 +88,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             .catch(err => console.error('Delete account error:', err));
         }
     });
+
 }
+const burgerBtn = document.getElementById('burger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+burgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('show');
+    burgerBtn.classList.toggle('open');
+});
 
 </script>

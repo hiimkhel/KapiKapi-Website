@@ -1182,3 +1182,135 @@ footer{
 }
 
 
+/* Burger Menu */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.burger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.burger-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--secondary-color);
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em 0;
+    z-index: 1000;
+}
+
+.mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.mobile-menu a {
+    font-size: 1.2rem;
+}
+
+.mobile-menu form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    /* Hide desktop nav */
+    nav.nav-links {
+        display: none !important;
+    }
+
+    /* Hide desktop login/register buttons */
+    .login-and-register-btn {
+        display: none !important;
+    }
+
+    /* Show burger button */
+    .burger-btn {
+        display: flex;
+    }
+
+    /* Mobile menu is hidden by default */
+    .mobile-menu {
+        display: none;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* spacing between stacked sections */
+    }
+
+    .footer-content {
+        width: 90%; /* make each section take most of the screen width */
+        text-align: center; /* center text for mobile */
+    }
+
+    .footer-logo {
+        justify-content: center; /* center logo horizontally */
+    }
+
+    .socials-icons {
+        justify-content: center; /* center social icons */
+    }
+
+    .copyright {
+        font-size: 16px; /* slightly smaller font */
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .footer-content h3 {
+        font-size: 1.2rem; /* smaller headings */
+    }
+
+    .footer-content p {
+        font-size: 0.9rem; /* smaller text */
+    }
+
+    .social {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social img {
+        width: 20px;
+        height: 20px;
+    }
+}

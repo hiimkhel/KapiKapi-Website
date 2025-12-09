@@ -7,16 +7,18 @@ let currentQuantity = 1;
 
 // Show/hide menu sections
 function showSection(sectionId) {
-    document.querySelectorAll('.menu-section').forEach(sec => sec.style.display = 'none');
-    document.getElementById(sectionId).style.display = 'grid';
+    document.querySelectorAll('.menu-section').forEach(sec => {
+        sec.style.display = (sec.id === sectionId) ? 'grid' : 'none';
+    });
 }
 
 // Load menu from backend
 async function loadMenu() {
     try {
         const res = await fetch('../pages/get-menu.php');
-        const data = await res.json(); // Must return JSON with keys: food, merch
-        console.log(data);
+        const data = await res.json(); // Should return { food: [...], merch: [...] }
+        console.log("Menu data:", data);
+
         const foodSection = document.getElementById('food-section');
         const merchSection = document.getElementById('merch-section');
 
@@ -25,34 +27,25 @@ async function loadMenu() {
 
         data.food.forEach(item => foodSection.appendChild(createMenuArticle(item)));
         data.merch.forEach(item => merchSection.appendChild(createMenuArticle(item)));
+
     } catch(err) {
         console.error("Failed to load menu:", err);
     }
 }
 
-// Create menu article element
+// Create a menu article
 function createMenuArticle(item) {
     const article = document.createElement('article');
-
-    let adminButtons = '';
-    if (isLoggedIn) {
-        adminButtons = `
-        `;
-    }
-
     article.innerHTML = `
-        ${adminButtons}
         <img src="${item.image}" alt="${item.name}">
         <h2>${item.name}</h2>
         <p>${item.description}</p>
         <p>₱${parseFloat(item.price).toFixed(2)}</p>
         <button class="order-btn">Order Now</button>
     `;
-
     article.querySelector('.order-btn').addEventListener('click', () => {
         showOrderPopUp(item.name, item.price, item.image);
     });
-
     return article;
 }
 
@@ -63,9 +56,7 @@ function showOrderPopUp(name, price, img) {
     currentQuantity = 1;
 
     const popupCard = document.querySelector('.popup-card');
-
-    popupCard.innerHTML = isLoggedIn
-        ? `
+    popupCard.innerHTML = `
         <div class="popup-header">
             <h2>Complete Your Order</h2>
             <button onclick="closeOrderPopup()">×</button>
@@ -96,15 +87,7 @@ function showOrderPopUp(name, price, img) {
             <label>Delivery Notes</label><textarea name="deliveryNotes"></textarea>
             <button type="submit">Place Order</button>
         </form>
-        `
-        : `
-        <div class="popup-header">
-            <h2>Not Logged In</h2>
-            <button onclick="closeOrderPopup()">×</button>
-        </div>
-        <p style="padding:20px; text-align:center;">You must be logged in to place an order.</p>
-        `;
-
+    `;
     overlay.style.display = 'flex';
 }
 
@@ -131,5 +114,6 @@ overlay.addEventListener('click', e => {
     if (e.target === overlay) closeOrderPopup();
 });
 
-// Load menu on page load
+// Initial load
 loadMenu();
+showSection('food-section'); // show food by default

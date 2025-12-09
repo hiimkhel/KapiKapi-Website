@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+header('Content-Type: application/json');
 include("../config.php");
 
 $menuItems = [];
@@ -14,5 +16,7 @@ if ($result && $result->num_rows > 0) {
 $food = array_filter($menuItems, fn($item) => $item['category'] === 'food');
 $merch = array_filter($menuItems, fn($item) => $item['category'] === 'merch');
 
-header('Content-Type: application/json');
-echo json_encode(['food' => array_values($food), 'merch' => array_values($merch)]);
+echo json_encode([
+    'food' => array_values($food),
+    'merch' => array_values($merch)
+]);
