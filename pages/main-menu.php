@@ -27,7 +27,6 @@
             <button class="menu-btn" onclick="showSection('merch-section')">Merchandise</button>
         </nav>
 
-        <!-- Sections (Empty, will be populated by JS) -->
         <section id="food-section" class="menu-section"></section>
         <section id="merch-section" class="menu-section" style="display:none;"></section>
 
