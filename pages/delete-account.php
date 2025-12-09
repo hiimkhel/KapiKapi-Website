@@ -16,7 +16,9 @@ if($stmt->execute()){
     session_unset();
     session_destroy();
     echo json_encode(['success' => true]);
+    header("Location: login-register.php");
 } else {
     echo json_encode(['success' => false, 'message' => 'Failed to delete account']);
+    header("Location: login-register.php");
 }
 ?>
