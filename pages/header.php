@@ -72,7 +72,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     deleteBtn.addEventListener('click', () => {
         const confirmed = confirm("Are you sure you want to delete your account? This action cannot be undone.");
         if (confirmed) {
-            fetch('../pages/delete-account.php', { // adjust path if needed
+            fetch('../pages/delete-account.php', { 
                 method: 'POST',
                 credentials: 'same-origin'
             })
@@ -80,7 +80,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             .then(data => {
                 if(data.success){
                     alert("Your account has been deleted.");
-                    window.location.href = "./index.php"; // redirect to homepage
+                    window.location.href = "./index.php"; 
                 } else {
                     alert("Failed to delete account. " + (data.message || ""));
                 }

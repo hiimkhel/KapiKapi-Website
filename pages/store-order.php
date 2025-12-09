@@ -11,9 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    $user_id = $_SESSION["user_id"];  // <-- get the logged-in user ID
+    $user_id = $_SESSION["user_id"];  
 
-    // Sanitized Inputsq
     $product = $_POST["product"];
     $quantity = $_POST["quantity"];
     $price = $_POST["price"];

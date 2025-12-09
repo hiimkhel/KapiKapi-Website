@@ -919,7 +919,6 @@ article img{
     gap: 16px;
 }
 
-/* Name Fields Side-by-Side */
 #name-fields {
     display: flex;
     gap: 16px;
@@ -938,7 +937,6 @@ article img{
     font-size: 16px;
     background-color: var(--supporting-color);
     transition: border 0.25s ease, box-shadow 0.25s ease;
-    /* BEST PRACTICE: Include box-sizing */
     box-sizing: border-box; 
 }
 
@@ -1628,7 +1626,6 @@ footer{
         display: none !important;
     }
 
-    /* Hide desktop login/register buttons */
     .login-and-register-btn {
         display: none !important;
     }
@@ -1698,9 +1695,7 @@ footer{
     }
     .menu-header{
         width: 400px;
-        padding: .5em;
-        
-        
+        padding: .5em;  
     }
     .menu-title{
         font-size: 1.2rem;
@@ -1710,11 +1705,11 @@ footer{
         text-align: left;
     }
     .footer-content h3 {
-        font-size: 1.2rem; /* smaller headings */
+        font-size: 1.2rem;
     }
 
     .footer-content p {
-        font-size: 0.9rem; /* smaller text */
+        font-size: 0.9rem;
     }
 
     .social {
